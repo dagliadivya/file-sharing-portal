@@ -1,0 +1,134 @@
+<html>
+<head><title></title>
+<link rel="stylesheet" type="text/css" href="homepage.css">	
+<script>
+
+function validate(par)
+{
+
+
+if(par=='n')
+{
+
+var n = document.f1.name.value;
+if(n.length==0)
+{
+
+document.getElementById('p1').innerHTML="required!";
+
+}
+}//if n
+
+else if(par=='e')
+{
+
+var e = document.f1.email.value;
+if(e.length==0)
+{
+
+document.getElementById('p2').innerHTML="required!";
+
+}
+else
+{
+
+regex=/^[A-Za-z0-9._]*[@][A-Za-z0-9.]*[.][A-Za-z0-9.]*$/;
+if(e.match(regex))
+{}
+else
+{
+
+document.getElementById('p2').innerHTML="Incorrect Format for email!";
+
+}
+
+
+
+}//if e
+
+
+
+}//if
+else if(par=='p1')
+{
+var p1=document.f1.password.value;
+if(p1.length==0)
+{
+
+document.getElementById('p3').innerHTML="required!";
+
+}
+
+
+}//p1
+
+else if(par=='p2')
+{
+var p1=document.f1.password.value;
+var p2=document.f1.repassword.value;
+if(p2.length==0)
+{
+
+document.getElementById('p4').innerHTML="required!";
+
+}
+if(p1!=p2)
+{
+document.getElementById('p4').innerHTML="Passwords do not match!";
+
+}
+
+
+
+}
+
+
+
+}//fun
+
+
+</script>	
+</head>
+<body  >
+
+<div class="page" >
+<div class="header">
+<h1 class="heading">FILE SHARING PORTAL</h1>
+<table align="right">
+<form method="post" action="search_file.php">
+<tr>
+  <td><input type="text" name="search"></td>
+<td><input type="submit" name="submit" value="Search file"></td>
+</tr>
+</form>
+</table>
+</div>
+
+
+<div style="height:400px; float:left; background-color:#33B7FE; width:100%; padding-left:30px">
+<form action="signup.php"
+ method="post" name="f1" >
+ <table class="tform"  >
+
+<tr><td>Name: </td><td><input type="text" name="name" onBlur="validate('n')"></td><td><p id="p1"></p></td></tr>
+<tr><td>E-mail:</td><td> <input type="text" name="email" onBlur="validate('e')"></td><td><p id="p2"></p></td></tr>
+<tr><td>Password:</td><td> <input type="password" name="password" onBlur="validate('p1')"></td><td><p id="p3"></p></td></tr>
+<tr><td>Re-enter password:</td><td> <input type="password" name="repassword" onBlur="validate('p2')"></td><td><p id="p4"></p></td></tr>
+<tr><td><input type="submit" name="submit" value="Signup"></td></tr>
+
+</table>
+</form>
+<form method="post" action="login.php">
+<table  class="tform">
+
+<tr><td width="167">Email-Id:</td><td><input type="text" name="email2"></td></tr>
+<tr><td>Password:</td><td><input type="password" name="password2"></td></tr>
+<tr><td><input type="submit" value="Login" name="submit1"></td></tr>
+
+</table>
+</form>
+</div>
+
+</div>
+</body>
+</html>
